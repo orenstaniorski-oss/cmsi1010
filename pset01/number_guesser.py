@@ -32,3 +32,9 @@
 # even be correct. Perhaps, worse, they might not follow the instructions
 # exactly as given.
 # ----------------------------------------------------------------------
+import random
+
+random.randint(1,1000)
+
+
+
