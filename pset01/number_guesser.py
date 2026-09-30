@@ -34,7 +34,15 @@
 # ----------------------------------------------------------------------
 import random
 
-random.randint(1,1000)
+n=random.randint(1,1000)
 
-
+while True:
+    print("I chose a random number between 1-1000. Guess the number. You can type 'bye' or 'exit' to quit. ")
+    guess = input("What is your first guess?")
+    gc = 1
+    if guess == n:
+        print("Congratulations! You guessed the number!")
+    elif guess > n:
+        "Too high!"
+        gc=gc+1
 
