@@ -34,5 +34,11 @@ countries = {
         "coordinates": (64.1470, -21.9408),
         "region": "Northern Europe",
         "landmarks": ["Blue Lagoon", "Hallgrímskirkja", "Gullfoss Waterfall"]
+    },
+    "bolivia" : {
+        "capital":"Sucre",
+        "coordinates": (-16.29,-63.55),
+        "region": "South America",
+        "landmarks": ["Christ of the Concord","September 24 Square","The Witches Market"]
     }
 }
