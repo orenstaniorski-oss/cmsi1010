@@ -55,5 +55,21 @@ templates = [
      }
 ]
 
+yes_answers = {"yes","oui","si","yup","bet","yeah"}
+
 current_template = random.choice(templates)
-print(current_template)
+string=current_template["text"].split
+
+output=[]
+for word in string:
+    if ":" in word:
+        input=f"Pick a {word}"
+        output.append(input)
+    else:
+        output.append(word)
+
+print(" ".join(output))
+
+
+
+

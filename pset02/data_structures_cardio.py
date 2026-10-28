@@ -22,110 +22,141 @@
 
 
 def third_element(t):
-    if not isinstance(t,tuple) or len(t)<3:
+    if not isinstance(t, tuple):
+        raise TypeError("Not a tuple")
+    elif len(t)<3:
         raise IndexError("Must input a tuple with at least 3 elements")
     return t[2]
 
 
 
 def reverse_pair(t):
-    if not isinstance(t,tuple) or len(t) != 2:
-        raise IndexError("Must input a tuple with 2 elements")
-    return {t[1],t[0]}
+    if not isinstance(t,tuple):
+        raise TypeError("not a tuple")
+    elif len(t)!=2:
+        raise ValueError("must be a tuple with exaclty 2 elements")
+    else:
+        return (t[1],t[0])
 
 
 def middle_element_of_list(a):
-    """
-    If a is a list with an odd number of elements, return the
-    middle element. If a is a list with an even number of elements,
-    return the leftmost middle element. If a is a list with no
-    elements, raise an IndexError. If a is not a list, raise a
-    TypeError.
-    """
-    # replace the pass statement with your code
-    pass
+    if not isinstance(a, list):
+        raise TypeError("You must input a list")
+    elif len(a) == 0:
+        raise IndexError("You must input a non-empty list")
+    elif len(a)%2==1:
+        return a[len(a)//2]
+    else:
+        return a[len(a)//2-1]
+    
 
 
 def unique_elements(a):
-    """
-    Return a set of unique elements from the input list a.
-    If a is not a list, raise a TypeError.
-    """
-    # replace the pass statement with your code
-    pass
+    if not isinstance(a, list):
+        raise TypeError("You must input a list")
+    else:
+        return set(a)
+
+
 
 
 def contains_duplicates(a):
-    """
-    Return True if the input list a contains any duplicate elements,
-    and False otherwise. If a is not a list, raise a TypeError.
-    """
-    # replace the pass statement with your code
-    pass
+    if not isinstance(a,list):
+        raise TypeError("Must input a list")
+    else:
+        duplicate=False
+        a_elements=[]
+        for item in a:
+            if item in a_elements:
+                duplicate=True
+            else:
+                a_elements.append(item)
+        return duplicate 
+                
 
 
 def is_superset(a, b):
-    """
-    Return True if set a is a superset of set b, and False otherwise.
-    If either a or b is not a set, raise a TypeError.
-    """
-    # replace the pass statement with your code
-    pass
+    if not isinstance(a,set) or not isinstance(b,set):
+        raise TypeError("Must input two lists")
+    else:
+        for item in b:
+            if item not in a:
+                return False
+        return True
+
 
 
 def is_subset(a, b):
-    """
-    Return True if set a is a subset of set b, and False otherwise.
-    If either a or b is not a set, raise a TypeError.
-    """
-    # replace the pass statement with your code
-    pass
+    if not isinstance(a,set) or not isinstance(b,set):
+        raise TypeError("Must input two lists")
+    else:
+        for item in a:
+            if item not in b:
+                return False
+        return True
+
 
 
 def is_disjoint(a, b):
-    """
-    Return True if sets a and b are disjoint (i.e., have no elements in common),
-    and False otherwise. If either a or b is not a set, raise a TypeError.
-    """
-    # replace the pass statement with your code
-    pass
+    if not isinstance(a,set) or not isinstance(b,set):
+        raise TypeError("Must input two lists")
+    else:
+        for item in a:
+            if item in b:
+                return False
+        return True
 
 
 def most_frequent_value_or_values(d):
-    """
-    Return the value or values that appear most frequently in the
-    dictionary d. If there are multiple values with the same maximum
-    frequency, return them as a set. If d is empty, return the empty
-    set (because there are no elements to count). If d is not a
-    dictionary, raise a TypeError.
-    """
-    # replace the pass statement with your code
-    pass
+    if not isinstance(d, dict):
+        raise TypeError("Must input a dictionary")
+    else:
+        v=list(d.values())
+        if len(v)==0:
+            return set()
+        else:
+            output=[]
+            v_counts={}
+            for value in v:
+                if value in v_counts:
+                    v_counts[value]+=1
+                else:
+                    v_counts[value]=1
+            largest_v=0
+            for count in v_counts.values():
+                if count>largest_v:
+                    largest_v=count
+            for key in v_counts.keys():
+                if v_counts[key]==largest_v:
+                    output.append(key)
+            return set(output)
+
+            
 
 
 def key_is_in_both_dictionaries(d1, d2, key):
-    """
-    Return True if the key is present in both dictionaries d1 and d2,
-    and False otherwise. If either d1 or d2 is not a dictionary,
-    raise a TypeError.
-    """
-    # replace the pass statement with your code
-    pass
+    if (not isinstance(d1, dict)) or (not isinstance(d2,dict)):
+        raise TypeError("must input two dictionaries")
+    k1=list(d1.keys())
+    k2=list(d2.keys())
+    in_both=False
+    for key1 in k1:
+        if key1==key and key1 in k2:
+            in_both=True
+    return in_both
 
 
 def word_frequencies(s):
-    """
-    Return a dictionary with the frequency of each word in the string s.
-    The keys of the dictionary are the words, and the values are the
-    number of times each word appears in the string.
-
-    A word is defined as a sequence of characters separated by spaces.
-    You can implement this function using the split method.
-
-    If s is not a string, raise a TypeError.
-    """
-    # replace the pass statement with your code
-    pass
+    if not isinstance(s,str):
+        raise TypeError("Must input a string")
+    s=s.lower().split()
+    word_counts={}
+    for word in s:
+        if word in word_counts:
+            word_counts[word]+=1
+        else:
+            word_counts[word]=1
+    return word_counts
 
 
 def _assert_raises(exception_type, func, *args):
