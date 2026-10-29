@@ -45,30 +45,83 @@ import random
 
 templates = [
    { "text":"A :adjective ghost is behind you!",
-     "author":"oren"
+     "author":"class"
     },
    {"text":"Some :adjective :creature with a :weapon is eating :dessert",
-    "author":"oren"
+    "author":"class"
     },
     {"text" : "Look! There is a :adverb :adjective :verb a :noun in :place",
      "author" : "class"
-     }
+     },
+    {"text":"Run! There is a :adjective :creature :verb :adverb",
+     "author":"oren"  
+    },
+    {"text":"Avoid the :place there is a :creature inside",
+      "author":"oren" 
+    },
+    {"text":"You need to :verb or :creature will :verb you",
+     "author":"oren"    
+    },
+    {"text":"A :creature eats its :food at :place",
+     "author":"oren"     
+    },
+    {"text":"Don't :verb the :creature it will :verb you :adverb",
+     "author":"oren"    
+    },
+    {"text":"If :creature comes in here, :verb it with a :weapon",
+     "author":"oren"  
+    },
+    {"text":"Run towards :place there is a :weapon there",
+     "author":"oren"    
+    } 
+    
 ]
 
 yes_answers = {"yes","oui","si","yup","bet","yeah"}
+playing=True
 
-current_template = random.choice(templates)
-string=current_template["text"].split
-
-output=[]
-for word in string:
-    if ":" in word:
-        input=f"Pick a {word}"
-        output.append(input)
-    else:
+while playing:
+    current_template = random.choice(templates)
+    string=current_template["text"]
+    string=string.split()
+    output=[]
+    for word in string:
+      if ":" in word:
+        choice=input(f"Pick a {word[1:]}: ")
+        if len(choice)>30:
+           raise ValueError("Please input a 30 character or less word")
+        output.append(choice)
+      else:
         output.append(word)
+    sentence= " ".join(output)
+    print("""
+    
+     """)
+    print(sentence)
+    print(""" 
 
-print(" ".join(output))
+    """)
+    print("Ad-lib written by " + current_template["author"])
+    print("""
+
+    """)
+    still_playing = input("Would you like to play another round? ").lower().strip()
+    while True:
+      if still_playing in yes_answers:
+          break
+      elif still_playing.lower()=='no':
+          playing=False
+          print("thank you for playing")
+          break 
+      else:
+        still_playing=input("Please say either yes or no: ")
+        continue 
+  
+    
+          
+
+
+
 
 
 
